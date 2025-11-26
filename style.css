@@ -55,7 +55,6 @@ header .container {
 .logo img {
     height: 50px; 
     width: auto;
-    /* تأكد أن مسار الشعار (logo.png) صحيح */
 }
 
 nav ul {
@@ -81,7 +80,6 @@ nav ul li a:hover {
 /* 3. Hero Section & Buttons */
 /* ---------------------------------- */
 .hero {
-    /* تأكد أن مسار الصورة الخلفية صحيح أو استبدلها بلون إن لم تتوفر الصورة */
     background: linear-gradient(rgba(26, 47, 79, 0.75), rgba(26, 47, 79, 0.75)), url('hero-bg-professional.jpg') no-repeat center center/cover;
     color: var(--text-light);
     padding: 120px 0;
@@ -298,7 +296,86 @@ footer a {
 }
 
 /* ---------------------------------- */
-/* 9. Animations & Keyframes */
+/* 9. Contact Page Specifics (Desktop) */
+/* ---------------------------------- */
+.contact-grid {
+    /* Keep the desktop layout as 2fr 1fr */
+    display: grid;
+    grid-template-columns: 2fr 1fr; 
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.contact-form, .contact-info {
+    padding: 30px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.contact-form h2, .contact-info h2 {
+    color: var(--primary-color);
+    margin-bottom: 25px;
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: 'Cairo', sans-serif;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+.info-card {
+    margin-bottom: 30px;
+    padding: 15px;
+    border: 1px solid var(--bg-light);
+    border-radius: 6px;
+    transition: background 0.3s;
+}
+
+.info-card:hover {
+    background: var(--bg-light);
+}
+
+.info-card i {
+    font-size: 1.8rem;
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+}
+
+.info-card h3 {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+
+/* ---------------------------------- */
+/* 10. Animations & Keyframes */
 /* ---------------------------------- */
 
 @keyframes fadeInUp {
@@ -329,21 +406,19 @@ footer a {
 
 /* تطبيق الحركات الأساسية */
 .fade-in-up, .slide-in-left, .slide-in-right, .bounce-in, .zoom-in {
-    /* FIX: هذه الخاصية ضرورية لضمان بقاء العنصر في الحالة النهائية للحركة */
     animation-fill-mode: both; 
-    opacity: 0; /* يبدأ مخفيًا */
+    opacity: 0; 
 }
 
 /* تحديد أزمنة الحركات */
 .fade-in-up { animation-name: fadeInUp; animation-duration: 0.7s; }
 .slide-in-left { animation-name: slideInLeft; animation-duration: 0.8s; }
 .slide-in-right { animation-name: slideInRight; animation-duration: 0.8s; }
-.bounce-in { animation-name: bounceIn; animation-duration: 1.5s; } /* مدة أطول لتفادي الاختفاء */
+.bounce-in { animation-name: bounceIn; animation-duration: 1.5s; } 
 .zoom-in { animation-name: zoomIn; animation-duration: 0.6s; }
 
 
-/* FIX: طريقة تطبيق تأثير التتابع (Stagger) */
-/* نطبق الحركة الأساسية (fade-in-up) ثم نستخدم animation-delay فقط */
+/* تأثير التتابع (Stagger) */
 .fade-in-up-stagger li { 
     animation-name: fadeInUp; 
     animation-duration: 0.7s;
@@ -355,83 +430,88 @@ footer a {
 .fade-in-up-stagger li:nth-child(2) { animation-delay: 0.5s; }
 .fade-in-up-stagger li:nth-child(3) { animation-delay: 0.7s; }
 .fade-in-up-stagger li:nth-child(4) { animation-delay: 0.9s; }
-/* ... وهكذا حسب عدد العناصر في القائمة ... */
+
 /* ---------------------------------- */
-/* 10. Contact Page Specifics */
+/* 11. Mobile Responsiveness (Media Query) */
 /* ---------------------------------- */
+@media (max-width: 768px) {
+    
+    /* 1. Header & Navigation */
+    header .container {
+        flex-direction: column; /* ترتيب رأسي للشعار والقائمة */
+    }
 
-.contact-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr; /* النموذج يأخذ ثلثي المساحة والمعلومات الثلث */
-    gap: 40px;
-    margin-top: 40px;
-}
+    nav ul {
+        flex-direction: column; /* ترتيب رأسي لروابط القائمة */
+        text-align: center;
+        width: 100%;
+        margin-top: 10px;
+    }
 
-.contact-form, .contact-info {
-    padding: 30px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-}
+    nav ul li {
+        margin: 5px 0;
+    }
 
-.contact-form h2, .contact-info h2 {
-    color: var(--primary-color);
-    margin-bottom: 25px;
-    border-bottom: 2px solid var(--secondary-color);
-    padding-bottom: 10px;
-}
+    /* 2. Hero Section */
+    .hero {
+        padding: 60px 0;
+    }
 
-/* تنسيق النموذج */
-.form-group {
-    margin-bottom: 20px;
-}
+    .hero h1 {
+        font-size: 2rem;
+    }
 
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 700;
-    color: var(--text-dark);
-}
+    .hero p {
+        font-size: 1.1rem;
+    }
 
-.form-group input[type="text"],
-.form-group input[type="email"],
-.form-group textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1rem;
-    font-family: 'Cairo', sans-serif;
-    transition: border-color 0.3s;
-}
+    /* 3. About Snippet */
+    .about-snippet .container {
+        flex-direction: column; /* ترتيب رأسي لقسم "عن الشركة" */
+    }
+    
+    .about-content {
+        padding-right: 0;
+        border-right: none;
+        border-bottom: 5px solid var(--secondary-color); /* نقل الخط الفاصل للأسفل */
+        padding-bottom: 25px;
+        margin-bottom: 25px;
+    }
 
-.form-group input:focus,
-.form-group textarea:focus {
-    border-color: var(--primary-color);
-    outline: none;
-}
+    .about-image {
+        height: 200px;
+    }
+    
+    /* 4. Contact Strip */
+    .contact-strip p {
+        display: flex; /* ترتيب أرقام الهواتف والبريد رأسيًا */
+        flex-direction: column;
+        gap: 5px;
+    }
 
-/* تنسيق معلومات الاتصال */
-.info-card {
-    margin-bottom: 30px;
-    padding: 15px;
-    border: 1px solid var(--bg-light);
-    border-radius: 6px;
-    transition: 0.3s;
-}
+    /* 5. About Page (Vision & Mission) */
+    .vision-mission {
+        flex-direction: column;
+        gap: 20px;
+    }
 
-.info-card:hover {
-    background: var(--bg-light);
-}
+    /* 6. Products Page */
+    .product-grid {
+        grid-template-columns: 1fr; /* عمود واحد للمنتجات */
+    }
 
-.info-card i {
-    font-size: 1.8rem;
-    color: var(--secondary-color);
-    margin-bottom: 10px;
-}
+    /* 7. Contact Page Layout FIX */
+    .contact-grid {
+        grid-template-columns: 1fr; /* عمود واحد لصفحة الاتصال */
+        gap: 30px;
+    }
+    
+    /* ضمان أن النموذج (form) يظهر أولاً والمعلومات (info) تظهر ثانيًا */
+    .contact-form {
+        order: 1; /* يأتي النموذج أولاً */
+    }
 
-.info-card h3 {
-    font-size: 1.2rem;
-    color: var(--primary-color);
-    margin-bottom: 5px;
+    .contact-info {
+        order: 2; /* تأتي المعلومات ثانيًا */
+    }
 }
