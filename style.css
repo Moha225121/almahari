@@ -159,6 +159,19 @@ nav ul li a:hover {
     height: 300px; 
     background-color: #e3e8f0;
     border-radius: 8px;
+    overflow: hidden; /* hide excess parts of large images */
+    display: flex;
+    align-items: center; /* vertically center the image within the box */
+    justify-content: center; /* horizontally center */
+}
+
+/* Ensure the image fills the about-image box cleanly and stays responsive */
+.about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* crop to fill the box while preserving aspect */
+    display: block;
+    border-radius: 8px;
 }
 
 .contact-strip {
@@ -293,6 +306,20 @@ footer a {
 .product-card h3 {
     color: var(--primary-color);
     margin: 10px 0;
+}
+
+/* Product card images and load-more support */
+.product-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 6px;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.product-card.hidden {
+    display: none;
 }
 
 /* ---------------------------------- */
